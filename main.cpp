@@ -227,7 +227,7 @@ treeNode* readFile(){
                     break;
                 }
                 root->piece[i] = root->piece[i] | U32Rev;
-                //root->numUreveal->piece[i]--;
+                root->numUnrevealPiece[i]--;
                 //printf("i=%d,intRev=%d,rev=%x,root->piece=%x\n",i,intRev,rev,root->piece[i]);
             }
         }
@@ -254,13 +254,23 @@ treeNode *root=readFile();
 
 int main(){
 
-
-    treeNode* result=max(root,INT_MIN,INT_MAX);
-
-
     root->printBoard();
-    cout<<result->value<<"\n";
-    cout<<result->chosenMove<<"\n";
-    cout<<nodeCount<<endl;
+    cout<<"my color= "<<root->playerColor<<endl;
+    // for(int i=0;i<16;i++){
+    //     cout<<root->numUnrevealPiece[i]<<endl;
+    // }
+    clock_t t=clock();
+    OmSearch(root);
+    //root=AB(root);
+    t=clock()-t;
+    
+
+    
+    cout<<"out put value= "<<root->value<<"\n";
+    cout<<"omNodes= "<<omNodeCount<<endl;
+    cout<<"abNodes= "<<nodeCount<<endl;
+    cout<<"Move="<<root->chosenMove<<endl;
+    cout<<"time="<<((float)t)/CLOCKS_PER_SEC<<"\n";
+    //cout<<treeNodeCount<<endl;
 }
 

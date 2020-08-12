@@ -7,10 +7,13 @@
 #include"treeNode.h"
 #include"evaluation.h"
 
+#define RedColor "\033[31m"
+#define RESET "\033[0m"
 extern string outPut;
-extern int depthCount,depthLimit;
+extern int depthCount;
+extern int const depthLimit;
 extern unsigned long long nodeCount;
-extern U32 red,black,occupied;
+
 
 treeNode* AB(treeNode*);
 
@@ -18,15 +21,12 @@ treeNode* max(treeNode*,int,int);
 treeNode* min(treeNode*,int,int);
 
 
-unsigned long long getNodeCount();
-int getDepthLim();
-U32 generateCMove(U32);
+
+
 
 void makeMove(string);
 
-void refreshRed(treeNode*);
-void refreshBlack(treeNode*);
-void refreshOccupied(treeNode*);
+
 
 // treeNode* generateMove(treeNode*);
 // treeNode* maxNext(treeNode*);
